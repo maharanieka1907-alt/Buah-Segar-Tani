@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Buah | Cerita Buah Tani</title>
 
     <style>
@@ -45,6 +46,10 @@
             font-size: 14px;
         }
 
+        nav a:hover {
+            color: #cbd9b8;
+        }
+
         .hero {
             background: #dfe8ce;
             padding: 90px 7%;
@@ -82,8 +87,10 @@
         }
 
         .intro {
+            max-width: 800px;
             margin-bottom: 45px;
             color: #687169;
+            font-size: 17px;
         }
 
         .fruit-grid {
@@ -96,6 +103,13 @@
             background: white;
             padding: 35px;
             border: 1px solid #e4e1d8;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .fruit-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(38, 61, 46, 0.08);
         }
 
         .emoji {
@@ -104,12 +118,19 @@
         }
 
         .fruit-card h2 {
-            margin-bottom: 12px;
+            margin-bottom: 10px;
             font-size: 27px;
         }
 
         .fruit-card p {
             color: #69736c;
+        }
+
+        .click-text {
+            margin-top: 18px;
+            color: #728957;
+            font-size: 13px;
+            font-weight: bold;
         }
 
         .info {
@@ -128,6 +149,82 @@
             max-width: 750px;
         }
 
+        /* POPUP */
+
+        .popup {
+            display: none;
+            position: fixed;
+            z-index: 10;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(20, 35, 25, 0.65);
+            padding: 30px;
+        }
+
+        .popup-content {
+            background: #f7f5ef;
+            max-width: 700px;
+            margin: 8% auto;
+            padding: 40px;
+            position: relative;
+            border: 1px solid #e4e1d8;
+        }
+
+        .close {
+            position: absolute;
+            right: 25px;
+            top: 15px;
+            font-size: 30px;
+            cursor: pointer;
+            color: #263d2e;
+        }
+
+        .popup-emoji {
+            font-size: 60px;
+            margin-bottom: 10px;
+        }
+
+        .popup-content h2 {
+            font-size: 35px;
+            margin-bottom: 10px;
+        }
+
+        .popup-description {
+            color: #69736c;
+            margin-bottom: 25px;
+        }
+
+        .plus-minus {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .plus,
+        .minus {
+            background: white;
+            padding: 25px;
+            border: 1px solid #e4e1d8;
+        }
+
+        .plus h3 {
+            color: #55783f;
+            margin-bottom: 10px;
+        }
+
+        .minus h3 {
+            color: #9a7045;
+            margin-bottom: 10px;
+        }
+
+        .plus p,
+        .minus p {
+            color: #69736c;
+            font-size: 14px;
+        }
+
         footer {
             background: #17271d;
             color: white;
@@ -141,12 +238,26 @@
         }
 
         @media (max-width: 700px) {
+
             nav {
                 display: none;
             }
 
             .fruit-grid {
                 grid-template-columns: 1fr;
+            }
+
+            .plus-minus {
+                grid-template-columns: 1fr;
+            }
+
+            .popup {
+                padding: 15px;
+            }
+
+            .popup-content {
+                margin: 5% auto;
+                padding: 30px 25px;
             }
         }
     </style>
@@ -155,19 +266,32 @@
 <body>
 
 <header>
+
     <div class="navbar">
-        <div class="logo">Cerita Buah Tani</div>
+
+        <div class="logo">
+            Cerita Buah Tani
+        </div>
 
         <nav>
             <a href="index.html">Beranda</a>
             <a href="buah.html">Buah</a>
+            <a href="pascapanen.html">Pascapanen</a>
+            <a href="tips.html">Tips</a>
         </nav>
+
     </div>
+
 </header>
 
+
 <section class="hero">
+
     <div class="hero-inner">
-        <div class="label">DUNIA BUAH</div>
+
+        <div class="label">
+            DUNIA BUAH
+        </div>
 
         <h1>
             Kenali<br>
@@ -175,82 +299,155 @@
         </h1>
 
         <p>
-            Setiap buah memiliki karakter, tingkat kematangan,
-            dan cara penanganan yang berbeda setelah dipanen.
+            Setiap buah memiliki karakter, kelebihan, dan hal yang
+            perlu diperhatikan. Klik buah untuk mengetahui lebih lanjut.
         </p>
+
     </div>
+
 </section>
+
 
 <main>
 
     <p class="intro">
         Buah merupakan salah satu hasil hortikultura yang banyak
-        dikonsumsi masyarakat. Kualitas buah dipengaruhi oleh
-        proses budidaya, waktu panen, serta penanganan setelah panen.
+        dikonsumsi masyarakat. Setiap jenis buah memiliki karakter
+        yang berbeda, baik dari segi pematangan, tekstur, daya simpan,
+        maupun cara penanganannya.
     </p>
+
 
     <div class="fruit-grid">
 
-        <div class="fruit-card">
+
+        <!-- PISANG -->
+
+        <div class="fruit-card" onclick="openPopup('pisang')">
+
             <div class="emoji">🍌</div>
+
             <h2>Pisang</h2>
+
             <p>
-                Pisang dapat terus mengalami proses pematangan
-                setelah dipanen. Perubahan warna kulit dan tekstur
-                dapat menjadi tanda terjadinya pematangan.
+                Buah yang dapat terus mengalami proses pematangan
+                setelah dipanen.
             </p>
+
+            <div class="click-text">
+                Klik untuk melihat + dan − →
+            </div>
+
         </div>
 
-        <div class="fruit-card">
+
+        <!-- MANGGA -->
+
+        <div class="fruit-card" onclick="openPopup('mangga')">
+
             <div class="emoji">🥭</div>
+
             <h2>Mangga</h2>
+
             <p>
-                Mangga mengalami perubahan warna, aroma, tekstur,
-                dan rasa selama proses pematangan.
+                Buah tropis yang mengalami perubahan warna, aroma,
+                tekstur, dan rasa selama pematangan.
             </p>
+
+            <div class="click-text">
+                Klik untuk melihat + dan − →
+            </div>
+
         </div>
 
-        <div class="fruit-card">
+
+        <!-- JERUK -->
+
+        <div class="fruit-card" onclick="openPopup('jeruk')">
+
             <div class="emoji">🍊</div>
+
             <h2>Jeruk</h2>
+
             <p>
-                Jeruk memiliki kulit yang membantu melindungi bagian
-                dalam buah. Penanganan yang kasar dapat menyebabkan
-                kerusakan pada kulit.
+                Buah dengan kulit yang membantu melindungi bagian
+                dalam dari kerusakan.
             </p>
+
+            <div class="click-text">
+                Klik untuk melihat + dan − →
+            </div>
+
         </div>
 
-        <div class="fruit-card">
+
+        <!-- APEL -->
+
+        <div class="fruit-card" onclick="openPopup('apel')">
+
             <div class="emoji">🍎</div>
+
             <h2>Apel</h2>
+
             <p>
-                Apel perlu ditangani dengan hati-hati karena benturan
-                dapat menyebabkan memar dan menurunkan kualitas buah.
+                Buah yang perlu ditangani dengan hati-hati karena
+                benturan dapat menyebabkan memar.
             </p>
+
+            <div class="click-text">
+                Klik untuk melihat + dan − →
+            </div>
+
         </div>
 
-        <div class="fruit-card">
+
+        <!-- SEMANGKA -->
+
+        <div class="fruit-card" onclick="openPopup('semangka')">
+
             <div class="emoji">🍉</div>
+
             <h2>Semangka</h2>
+
             <p>
-                Semangka memiliki kandungan air yang tinggi sehingga
-                penanganan dan pengangkutan perlu dilakukan dengan hati-hati.
+                Buah dengan kandungan air tinggi yang membutuhkan
+                penanganan hati-hati saat dipindahkan.
             </p>
+
+            <div class="click-text">
+                Klik untuk melihat + dan − →
+            </div>
+
         </div>
 
-        <div class="fruit-card">
+
+        <!-- ALPUKAT -->
+
+        <div class="fruit-card" onclick="openPopup('alpukat')">
+
             <div class="emoji">🥑</div>
+
             <h2>Alpukat</h2>
+
             <p>
-                Alpukat dapat mengalami pematangan setelah dipanen.
-                Tekstur buah berubah menjadi lebih lunak ketika matang.
+                Buah yang dapat mengalami pematangan setelah dipanen
+                dan berubah menjadi lebih lunak.
             </p>
+
+            <div class="click-text">
+                Klik untuk melihat + dan − →
+            </div>
+
         </div>
 
     </div>
 
+
     <div class="info">
-        <h2>Kenapa perlu mengenal karakter buah?</h2>
+
+        <h2>
+            Kenapa perlu mengenal karakter buah?
+        </h2>
 
         <p>
             Karena setiap buah memiliki sifat yang berbeda.
@@ -258,20 +455,166 @@
             pelaku usaha menentukan waktu panen, penanganan,
             penyimpanan, serta pengangkutan yang sesuai.
         </p>
+
     </div>
 
 </main>
 
+
+<!-- POPUP -->
+
+<div id="popup" class="popup">
+
+    <div class="popup-content">
+
+        <span class="close" onclick="closePopup()">&times;</span>
+
+        <div id="popupEmoji" class="popup-emoji"></div>
+
+        <h2 id="popupTitle"></h2>
+
+        <p id="popupDescription" class="popup-description"></p>
+
+
+        <div class="plus-minus">
+
+            <div class="plus">
+
+                <h3>＋ Plus</h3>
+
+                <p id="popupPlus"></p>
+
+            </div>
+
+
+            <div class="minus">
+
+                <h3>− Minus</h3>
+
+                <p id="popupMinus"></p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
 <footer>
-    <h3>Cerita Buah Tani</h3>
+
+    <h3>
+        Cerita Buah Tani
+    </h3>
 
     <p>
         Mengenal buah, menghargai petani,
         dan memahami perjalanan hasil pertanian.
     </p>
 
-    <small>© 2026 Cerita Buah Tani</small>
+    <small>
+        © 2026 Cerita Buah Tani
+    </small>
+
 </footer>
+
+
+<script>
+
+const dataBuah = {
+
+    pisang: {
+        emoji: "🍌",
+        title: "Pisang",
+        description: "Pisang dapat mengalami pematangan setelah dipanen sehingga tingkat kematangannya perlu diperhatikan.",
+        plus: "Dapat dipanen sebelum matang penuh dan tetap melanjutkan proses pematangan setelah panen.",
+        minus: "Relatif mudah mengalami memar dan perubahan kualitas apabila penanganan serta penyimpanannya kurang tepat."
+    },
+
+    mangga: {
+        emoji: "🥭",
+        title: "Mangga",
+        description: "Mangga mengalami perubahan warna, aroma, tekstur, dan rasa selama proses pematangan.",
+        plus: "Memiliki beragam varietas dan dapat dikonsumsi dalam kondisi maupun tingkat kematangan yang berbeda.",
+        minus: "Buah yang terlalu matang lebih mudah mengalami kerusakan sehingga penanganan setelah panen perlu diperhatikan."
+    },
+
+    jeruk: {
+        emoji: "🍊",
+        title: "Jeruk",
+        description: "Kulit jeruk berperan sebagai pelindung bagian dalam buah dari lingkungan luar.",
+        plus: "Kulitnya membantu melindungi bagian dalam buah selama penyimpanan dan pengangkutan.",
+        minus: "Benturan atau luka pada kulit dapat menurunkan kualitas dan memperbesar risiko kerusakan."
+    },
+
+    apel: {
+        emoji: "🍎",
+        title: "Apel",
+        description: "Apel perlu ditangani dengan hati-hati karena benturan dapat menyebabkan memar.",
+        plus: "Memiliki tekstur yang relatif kuat dan dapat disimpan dalam kondisi yang sesuai.",
+        minus: "Benturan selama panen, pengemasan, atau pengangkutan dapat menyebabkan memar pada buah."
+    },
+
+    semangka: {
+        emoji: "🍉",
+        title: "Semangka",
+        description: "Semangka memiliki kandungan air yang tinggi dan membutuhkan penanganan yang hati-hati.",
+        plus: "Memiliki kandungan air yang tinggi sehingga banyak dikonsumsi sebagai buah yang menyegarkan.",
+        minus: "Ukuran dan beratnya membuat proses pemindahan serta pengangkutan membutuhkan penanganan yang baik."
+    },
+
+    alpukat: {
+        emoji: "🥑",
+        title: "Alpukat",
+        description: "Alpukat dapat mengalami pematangan setelah dipanen dan teksturnya menjadi lebih lunak.",
+        plus: "Dapat dipanen sebelum matang penuh dan dibiarkan mengalami pematangan setelah panen.",
+        minus: "Ketika matang, teksturnya menjadi lunak sehingga lebih mudah mengalami kerusakan akibat tekanan atau benturan."
+    }
+
+};
+
+
+function openPopup(nama) {
+
+    const buah = dataBuah[nama];
+
+    document.getElementById("popupEmoji").textContent = buah.emoji;
+
+    document.getElementById("popupTitle").textContent = buah.title;
+
+    document.getElementById("popupDescription").textContent = buah.description;
+
+    document.getElementById("popupPlus").textContent = buah.plus;
+
+    document.getElementById("popupMinus").textContent = buah.minus;
+
+    document.getElementById("popup").style.display = "block";
+
+}
+
+
+function closePopup() {
+
+    document.getElementById("popup").style.display = "none";
+
+}
+
+
+window.onclick = function(event) {
+
+    const popup = document.getElementById("popup");
+
+    if (event.target === popup) {
+
+        closePopup();
+
+    }
+
+}
+
+</script>
+
 
 </body>
 </html>
