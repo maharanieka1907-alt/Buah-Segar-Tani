@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cerita Buah Tani</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f7f5ef;
+            color: #26352b;
+            line-height: 1.6;
+        }
+
+        header {
+            background: #263d2e;
+            color: white;
+            padding: 22px 7%;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 25px;
+            font-size: 14px;
+        }
+
+        .hero {
+            min-height: 600px;
+            padding: 100px 7%;
+            display: flex;
+            align-items: center;
+            color: white;
+            background:
+                linear-gradient(rgba(31, 61, 40, .78), rgba(31, 61, 40, .78)),
+                url("https://images.unsplash.com/photo-1619566636858-adf3ef46400b?auto=format&fit=crop&w=1800&q=80");
+            background-size: cover;
+            background-position: center;
+        }
+
+        .hero-content {
+            max-width: 750px;
+        }
+
+        .label {
+            color: #d5e6ad;
+            font-size: 13px;
+            font-weight: bold;
+            letter-spacing: 3px;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            font-size: clamp(55px, 8vw, 95px);
+            line-height: .95;
+            margin-bottom: 30px;
+        }
+
+        .hero p {
+            font-size: 18px;
+            max-width: 570px;
+            margin-bottom: 30px;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 14px 24px;
+            background: #d5e6ad;
+            color: #26352b;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        section {
+            padding: 90px 7%;
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        .section-label {
+            color: #7d9562;
+            font-size: 12px;
+            font-weight: bold;
+            letter-spacing: 3px;
+            margin-bottom: 18px;
+        }
+
+        h2 {
+            font-size: clamp(40px, 6vw, 65px);
+            line-height: 1;
+            margin-bottom: 25px;
+        }
+
+        .intro {
+            max-width: 680px;
+            color: #69736c;
+            font-size: 17px;
+            margin-bottom: 45px;
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .card {
+            background: white;
+            padding: 32px;
+            border: 1px solid #e4e1d8;
+        }
+
+        .card .number {
+            color: #8ca66d;
+            font-weight: bold;
+            margin-bottom: 25px;
+        }
+
+        .card h3 {
+            margin-bottom: 12px;
+            font-size: 21px;
+        }
+
+        .card p {
+            color: #707870;
+        }
+
+        .green {
+            max-width: none;
+            background: #263d2e;
+            color: white;
+        }
+
+        .green-inner {
+            max-width: 1060px;
+            margin: auto;
+        }
+
+        .green .section-label {
+            color: #c9dda9;
+        }
+
+        .fruit-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 18px;
+            margin-top: 45px;
+        }
+
+        .fruit {
+            background: white;
+            color: #26352b;
+            padding: 28px;
+            min-height: 250px;
+        }
+
+        .emoji {
+            font-size: 48px;
+            margin-bottom: 18px;
+        }
+
+        .fruit h3 {
+            margin-bottom: 10px;
+        }
+
+        .fruit p {
+            color: #707870;
+            font-size: 14px;
+        }
+
+        .tips {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0 40px;
+            margin-top: 40px;
+        }
+
+        .tip {
+            padding: 25px 0;
+            border-bottom: 1px solid #d8d4ca;
+        }
+
+        .tip span {
+            color: #829960;
+            font-weight: bold;
+        }
+
+        .tip p {
+            margin-top: 8px;
+        }
+
+        footer {
+            background: #17271d;
+            color: white;
+            text-align: center;
+            padding: 55px 20px;
+        }
+
+        footer h3 {
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+
+        footer p {
+            color: #aeb8b1;
+            margin-bottom: 20px;
+        }
+
+        footer small {
+            color: #7f8b82;
+        }
+
+        @media (max-width: 800px) {
+            nav {
+                display: none;
+            }
+
+            .cards,
+            .fruit-grid,
+            .tips {
+                grid-template-columns: 1fr;
+            }
+
+            .hero {
+                min-height: 560px;
+                padding: 80px 7%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div class="navbar">
+            <div class="logo">Cerita Buah Tani</div>
+
+            <nav>
+                <a href="#tentang">Tentang</a>
+                <a href="#buah">Buah</a>
+                <a href="#pascapanen">Pascapanen</a>
+                <a href="#tips">Tips</a>
+            </nav>
+        </div>
+    </header>
+
+
+    <div class="hero">
+        <div class="hero-content">
+            <div class="label">BUAH • TANI • PASCAPANEN</div>
+
+            <h1>
+                Dari Kebun<br>
+                Hingga Meja.
+            </h1>
+
+            <p>
+                Mengenal perjalanan buah dari tangan petani
+                hingga menjadi pangan yang siap dinikmati.
+            </p>
+
+            <a href="#tentang" class="button">
+                Jelajahi Cerita
+            </a>
+        </div>
+    </div>
+
+
+    <section id="tentang">
+        <div class="section-label">01 • TENTANG</div>
+
+        <h2>
+            Buah punya cerita<br>
+            sebelum sampai ke meja.
+        </h2>
+
+        <p class="intro">
+            Cerita Buah Tani adalah website edukasi sederhana
+            tentang dunia buah dan pertanian. Di sini kita mengenal
+            proses budidaya, panen, hingga penanganan pascapanen
+            agar hasil pertanian tetap berkualitas.
+        </p>
+
+        <div class="cards">
+
+            <div class="card">
+                <div class="number">01</div>
+                <h3>Petani</h3>
+                <p>
+                    Petani menjadi bagian penting dalam menghasilkan
+                    buah yang kita konsumsi sehari-hari.
+                </p>
+            </div>
+
+            <div class="card">
+                <div class="number">02</div>
+                <h3>Buah</h3>
+                <p>
+                    Setiap buah memiliki karakter dan kebutuhan
+                    penanganan yang berbeda.
+                </p>
+            </div>
+
+            <div class="card">
+                <div class="number">03</div>
+                <h3>Pascapanen</h3>
+                <p>
+                    Penanganan setelah panen membantu menjaga
+                    mutu dan mengurangi kerusakan hasil.
+                </p>
+            </div>
+
+        </div>
+    </section>
+
+
+    <section class="green" id="buah">
+        <div class="green-inner">
+
+            <div class="section-label">02 • KENALI BUAH</div>
+
+            <h2>
+                Setiap buah<br>
+                punya karakter.
+            </h2>
+
+            <div class="fruit-grid">
+
+                <div class="fruit">
+                    <div class="emoji">🍌</div>
+                    <h3>Pisang</h3>
+                    <p>
+                        Buah yang masih mengalami proses pematangan
+                        setelah dipanen.
+                    </p>
+                </div>
+
+                <div class="fruit">
+                    <div class="emoji">🥭</div>
+                    <h3>Mangga</h3>
+                    <p>
+                        Mengalami perubahan warna, aroma, tekstur,
+                        dan rasa selama pematangan.
+                    </p>
+                </div>
+
+                <div class="fruit">
+                    <div class="emoji">🍊</div>
+                    <h3>Jeruk</h3>
+                    <p>
+                        Kulit buah perlu dijaga agar tidak mengalami
+                        kerusakan selama penanganan.
+                    </p>
+                </div>
+
+                <div class="fruit">
+                    <div class="emoji">🍎</div>
+                    <h3>Apel</h3>
+                    <p>
+                        Membutuhkan kondisi penyimpanan yang sesuai
+                        untuk mempertahankan kualitas.
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+    <section id="pascapanen">
+
+        <div class="section-label">03 • PASCAPANEN</div>
+
+        <h2>
+            Perjalanan belum<br>
+            selesai setelah panen.
+        </h2>
+
+        <p class="intro">
+            Setelah dipanen, buah masih membutuhkan penanganan
+            yang tepat. Sortasi, pengemasan, penyimpanan, dan
+            pengangkutan menjadi bagian penting sebelum buah
+            sampai kepada konsumen.
+        </p>
+
+        <div class="cards">
+
+            <div class="card">
+                <div class="number">01</div>
+                <h3>Sortasi</h3>
+                <p>
+                    Memisahkan buah berdasarkan kondisi dan
+                    kerusakannya.
+                </p>
+            </div>
+
+            <div class="card">
+                <div class="number">02</div>
+                <h3>Pengemasan</h3>
+                <p>
+                    Melindungi buah dari benturan dan kerusakan
+                    selama distribusi.
+                </p>
+            </div>
+
+            <div class="card">
+                <div class="number">03</div>
+                <h3>Penyimpanan</h3>
+                <p>
+                    Menjaga kondisi lingkungan agar mutu buah
+                    tetap dipertahankan.
+                </p>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <section id="tips" class="green">
+
+        <div class="green-inner">
+
+            <div class="section-label">04 • TIPS</div>
+
+            <h2>
+                Hal kecil yang<br>
+                bisa menjaga kualitas.
+            </h2>
+
+            <div class="tips">
+
+                <div class="tip">
+                    <span>01</span>
+                    <p>
+                        Hindari menjatuhkan atau melempar buah
+                        karena dapat menyebabkan memar.
+                    </p>
+                </div>
+
+                <div class="tip">
+                    <span>02</span>
+                    <p>
+                        Gunakan wadah yang bersih dan sesuai
+                        untuk mengurangi kerusakan.
+                    </p>
+                </div>
+
+                <div class="tip">
+                    <span>03</span>
+                    <p>
+                        Pisahkan buah yang rusak dari buah
+                        yang masih dalam kondisi baik.
+                    </p>
+                </div>
+
+                <div class="tip">
+                    <span>04</span>
+                    <p>
+                        Perhatikan suhu dan kelembapan
+                        selama penyimpanan.
+                    </p>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <footer>
+        <h3>Cerita Buah Tani</h3>
+
+        <p>
+            Mengenal buah, menghargai petani,
+            dan memahami perjalanan hasil pertanian.
+        </p>
+
+        <small>
+            © 2026 Cerita Buah Tani
+        </small>
+    </footer>
+
+</body>
+</html>
